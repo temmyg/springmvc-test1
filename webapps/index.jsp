@@ -8,5 +8,6 @@
 </head>
 <body>
 	<h1>Hello SpringMVC</h1>
+	<b> <%= request.getParameter("user") %> </b> Welcome you!!
 </body>
 </html>

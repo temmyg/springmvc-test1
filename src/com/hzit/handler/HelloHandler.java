@@ -5,13 +5,10 @@ import java.util.Map;
 //import javax.servlet.http.HttpServletRequest;
 //import javax.servlet.http.HttpServletResponse;
 
+import com.hzit.entity.Address;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 
@@ -94,9 +91,16 @@ public class HelloHandler {
 	 * @return
 	 */
 	@RequestMapping(value="restful/{name}")
-	public String paramsBind(@PathVariable("name") String name){
+	@ResponseBody
+	public User paramsBind(@PathVariable("name") String name){
 		System.out.println(name);
-		return "index";
+		User user = new User();
+		user.setName("Michy");
+		Address addr = new Address();
+		addr.setName(name = "1055 San Gabriel Av.");
+		user.setAddress(addr);
+		return user;
+		//return "index";
 	}
 	
 	/**
@@ -114,5 +118,4 @@ public class HelloHandler {
 		System.out.println(user);
 		return "index";
 	}
-	
 }
